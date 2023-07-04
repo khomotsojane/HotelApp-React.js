@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Image from '../media/s6.jpg';
 import '../App.css';
 
 const SingleRoom = ({ handleDoubleBSubmit }) => {
@@ -42,7 +43,7 @@ const SingleRoom = ({ handleDoubleBSubmit }) => {
     <div className="align-items-center justify-content-center" style={{marginTop:'10%',marginBottom:'10%'}}>
         
     <form onSubmit={handleSubmit} className="doubleb-form">
-      <h2>Single Booking</h2>
+      <h1 style={{color: '#AA336A'}}>Single Room R5000</h1>
       <div className="form-group">
         <label htmlFor="checkInDate">Check-in Date:</label>
         <input
@@ -87,8 +88,9 @@ const SingleRoom = ({ handleDoubleBSubmit }) => {
         />
       </div>
 
-      <button type="submit">Submit</button>
+      <Link to='/Payment' style={{textDecoration: "none"}}><button type="submit">Submit</button></Link>
     </form>
+    <img src={Image}  style={{width: '100%'}} />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Image from '../media/ROOM2.jpg';
 import '../App.css';
+
 
 const DoubleB = ({ handleDoubleBSubmit }) => {
   const navigate = useNavigate();
@@ -34,16 +36,16 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
       numChildren
     };
     handleDoubleBSubmit(details);
-    navigate('/pay');
+    navigate('/Payment');
   };
 
   return (
 
-    <div className="align-items-center justify-content-center" style={{marginTop:'10%',marginBottom:'10%'}}>
+    <div className="align-items-end justify-content-end" style={{marginTop:'10%',marginBottom:'10%', }}>
         
     <form onSubmit={handleSubmit} className="doubleb-form">
-      <h2>Double Booking</h2>
-      <div className="form-group">
+      <h1 style={{color: '#AA336A'}}>R3500 Double beds</h1>
+      <div className="form-group"> 
         <label htmlFor="checkInDate">Check-in Date:</label>
         <input
           type="date"
@@ -87,8 +89,10 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
         />
       </div>
 
-      <button type="submit">Submit</button>
+      <Link to='/Payment' style={{textDecoration: "none"}}><button type="submit">Submit</button></Link>
     </form>
+    <img src={Image}  style={{width: '100%'}} />
+
     </div>
   );
 };
