@@ -1,11 +1,27 @@
-import { Link } from "react-router-dom";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// import { useState } from "react";
-// import { auth } from "./config/firebase";
+import { useHistory, Link, useNavigate} from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { auth } from "./config/firebase";
 
 
 const Home = () => {
+  //const history = useHistory('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
+  const Login =((e) =>{
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password).then(()=>{
+      alert("Logged in");
+      navigate('/About');
+    }).catch((error)=>{
+      console.log(error.message);
+    })
+    
+
+
+  })
 
   return (
     <div>
@@ -50,16 +66,16 @@ const Home = () => {
               />
             </div>
 
-            {/* <Link to="/DoubleB"> */}
+         
             <button
-              onClick={login}
+              onClick={Login}
               style={{ backgroundColor: "teal", color: "white" }}
               type="submit"
               className="btn"
             >
               Submit
             </button>
-            {/* </Link> */}
+         
           </form>
           <div className="row">
             <div className="col">
