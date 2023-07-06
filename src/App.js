@@ -10,7 +10,8 @@ import DoubleB from './components/DoubleB';
 import SingleRoom from './components/SingleRoom';
 import Payment from './components/Payment';
 import About from './components/About';
-import Paid from './components/Paid'
+import Paid from './components/Paid';
+// import Contact from './components/Contact';
 
 
 const router =createBrowserRouter(
@@ -24,6 +25,7 @@ const router =createBrowserRouter(
       <Route path="/Payment" element={<Payment/>}></Route>
       <Route path="/About" element={<About/>}></Route>
       <Route path="/Paid" element={<Paid/>}></Route>
+      {/* <Route path="/Contact" element={<Contact/>}></Route> */}
       <Route path="*" element={<Page404/>}></Route>
       
     </Route>

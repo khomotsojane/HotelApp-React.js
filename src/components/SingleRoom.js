@@ -67,13 +67,13 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
             <img src={S3} style={{width: '700px'}}  alt="..." />
           </div>
           <div className="carousel-item">
-            <img src={Image4} style={{width: '700px'}}  alt="..." />
+            <img src={S4} style={{width: '700px'}}  alt="..." />
           </div>
           <div className="carousel-item">
-            <img src={Image5} style={{width: '700px'}}  alt="..." />
+            <img src={S5} style={{width: '700px'}}  alt="..." />
           </div>
           <div className="carousel-item">
-            <img src={Image6} style={{width: '700px'}}  alt="..." />
+            <img src={S6} style={{width: '700px'}}  alt="..." />
           </div>
           
         </div>
@@ -95,7 +95,7 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="visually-hidden">Next</span>
         </button>
-        <h1 style={{ color: 'teal', background: 'white' }}>R3500 Double beds</h1>
+        <h1 style={{ color: 'teal', background: 'white' }}>R5000 Double beds</h1>
       </div>
         </div>
         <div className="col">

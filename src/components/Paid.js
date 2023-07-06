@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import "../App.css";
 
-const About = () => {
+const Paid = () => {
   return (
     <div className="container">
       <h1 style={{ textAlign: "center", color: "#AA336A" }}>
@@ -30,4 +30,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Paid;

@@ -39,7 +39,7 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
       checkInDate,
       checkOutDate,
       numAdults,
-      numChildren,
+      numChildren
     };
     handleDoubleBSubmit(details);
     navigate("/Payment");
