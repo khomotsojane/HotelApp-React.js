@@ -1,7 +1,14 @@
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import Starbucks from "../media/Starbucks.png";
 import homebackground from "../media/Home.jpg";
+import { auth } from "./config/firebase";
+
 const ParentContainer = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    auth.signOut();
+    navigate("/");
+  };
   return (
     <div
       className="container vh-100 ParentLayout"
@@ -58,6 +65,7 @@ const ParentContainer = () => {
                 >
                   Rooms
                 </Link>
+
                 <ul
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
@@ -80,6 +88,7 @@ const ParentContainer = () => {
       </nav>
 
       <main>
+        <button onClick={() => handleLogout()}>log out</button>
         <Outlet />
       </main>
     </div>

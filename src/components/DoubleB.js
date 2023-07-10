@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import {db} from './config/firebase';
+import { collection, addDoc } from "firebase/firestore";
+
+
 import Image1 from "../media/ROOM1.jpg";
 import Image2 from "../media/ROOM2.jpg";
 import Image3 from "../media/ROOM3.jpg";
@@ -10,12 +14,28 @@ import Image5 from "../media/ROOM5.jpg";
 import Image6 from "../media/ROOM6.jpg";
 import "../App.css";
 
-const DoubleB = ({ handleDoubleBSubmit }) => {
+const DoubleB = () => {
   const navigate = useNavigate();
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [numAdults, setNumAdults] = useState(0);
   const [numChildren, setNumChildren] = useState(0);
+
+  const add =(async()=>{
+
+    try{
+      const docRef = await addDoc(collection(db, "booking"),{
+        checkInDate: checkInDate,
+        checkOutDate: checkOutDate,
+        numAdults: numAdults,
+        numChildren: numChildren,
+      });
+      alert("Added successfully");
+    }catch{
+
+    }
+  
+  })
 
   const handleCheckInDateChange = (e) => {
     setCheckInDate(e.target.value);
@@ -41,7 +61,7 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
       numAdults,
       numChildren
     };
-    handleDoubleBSubmit(details);
+   
     navigate("/Payment");
   };
 
@@ -146,9 +166,9 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
           />
         </div>
 
-        <Link to="/Payment" style={{ textDecoration: "none" }}>
-          <button type="submit">Submit</button>
-        </Link>
+        
+          <button onClick={add} type="submit">Submit</button>
+       
       </form>
         </div>
       </div>

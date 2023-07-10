@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import {db} from './config/firebase';
+import { collection, addDoc } from "firebase/firestore";
+
 import S1 from "../media/S1.jpg";
 import S2 from "../media/s2.jpg";
 import S3 from "../media/s3.jpg";
@@ -16,6 +19,7 @@ const DoubleB = ({ handleDoubleBSubmit }) => {
   const [checkOutDate, setCheckOutDate] = useState("");
   const [numAdults, setNumAdults] = useState(0);
   const [numChildren, setNumChildren] = useState(0);
+
 
   const handleCheckInDateChange = (e) => {
     setCheckInDate(e.target.value);
