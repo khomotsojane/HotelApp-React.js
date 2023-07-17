@@ -1,10 +1,31 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import {  useNavigate } from "react-router-dom";
+import { auth, db } from "./config/firebase";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 const Payment = ({ handlePayment }) => {
+  const navigate = useNavigate();
   const [cardNumber, setCardNumber] = useState('');
   const [expirationDate, setExpirationDate] = useState('');
   const [cvv, setCvv] = useState('');
+
+  const user = auth.currentUser;
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  }, []);
+
+  const add = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "booking"), {
+        cardNumber: cardNumber,
+        expirationDate: expirationDate,
+        cvv: cvv,
+      });
+      alert("Paid successfully");
+    } catch {}
+  };
 
   const handleCardNumberChange = (e) => {
     setCardNumber(e.target.value);
@@ -22,6 +43,8 @@ const Payment = ({ handlePayment }) => {
     e.preventDefault();
     handlePayment();
   };
+
+  navigate("/Paid");
 
   return (
  
@@ -55,7 +78,7 @@ const Payment = ({ handlePayment }) => {
         required
       />
 
-      <Link to='/Paid' style={{textDecorationLine: 'none'}}><button type="submit">Pay Now</button></Link>
+     <button onClick={add} type="submit">Pay Now</button>
     </form>
   );
 };
